@@ -1,0 +1,1985 @@
+
+/* =================================
+   MONEYVERSE - MAIN DESIGN
+================================= */
+
+:root {
+    --background: #101426;
+    --sidebar: #171D34;
+    --card: #1C2540;
+    --card-light: #26314E;--purple: #8966F5;
+    --green: #39D69B;
+    --gold: #FFC85C;
+    --white: #F5F6FF;
+    --muted: #9BA7C3;
+    --red: #FF747C;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--background);
+    color: var(--white);
+    font-family: 'Nunito', sans-serif;
+}
+
+button, input, select, textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* MAIN LAYOUT */
+
+.app {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 255px;
+    background: var(--sidebar);
+    padding: 25px 18px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    border-right: 1px solid #303957;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 23px;
+    font-weight: 900;
+    margin-bottom: 45px;
+}
+
+.logo-icon {
+    color: var(--gold);
+    font-size: 30px;
+}
+
+.menu-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    margin: 0 0 14px 10px;
+    font-weight: 800;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-btn {
+    padding: 13px;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    text-align: left;
+    border-radius: 12px;
+    font-weight: 800;
+    transition: 0.2s;
+}
+
+.nav-btn:hover {
+    background: var(--card);
+    color: white;
+}
+
+.nav-btn.active {
+    background: var(--purple);
+    color: white;
+    box-shadow: 0 5px 20px #8966F540;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+}
+
+.level-card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 16px;
+    margin-top: 25px;
+}
+
+.level-card span {
+    font-size: 11px;
+    color: var(--gold);
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.level-card h2 {
+    margin: 8px 0 3px;
+}
+
+.level-card p {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.xp-track, .progress-track {
+    height: 9px;
+    background: #39435F;
+    border-radius: 20px;
+    margin-top: 12px;
+    overflow: hidden;
+}
+
+#xp-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--gold);
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.reset-btn {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #39435F;
+    background: transparent;
+    color: var(--muted);
+    border-radius: 10px;
+    margin-top: 12px;
+}
+
+/* MAIN CONTENT */
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 30px 35px;
+    max-width: 1600px;
+    margin: auto;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+    gap: 15px;
+}
+
+.small-text {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    font-weight: 900;
+    margin-bottom: 5px;
+}
+
+.topbar h2 {
+    font-size: 23px;
+}
+
+.top-wallet {
+    background: var(--card);
+    padding: 12px 20px;
+    border-radius: 14px;
+    border: 1px solid #38415F;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+}
+
+/* PAGE SWITCHING */
+
+.page {
+    display: none;
+    animation: appear 0.3s ease;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* HERO */
+
+.hero {
+    min-height: 260px;
+    border-radius: 24px;
+    padding: 35px;
+    background: linear-gradient(
+        115deg,
+        #30205F,
+        #6540A8,
+        #922F65
+    );
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    margin-bottom: 25px;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 25px rgba(90, 45, 150, 0.18);
+}
+
+.hero:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 35px rgba(130, 65, 190, 0.28);
+}
+
+.hero-tag {
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: #E4D9FF;
+}
+
+.hero h1 {
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.15;
+    margin: 14px 0;
+}
+
+.hero h1 span {
+    color: var(--gold);
+}
+
+.hero p {
+    color: #E0E0FF;
+    margin-bottom: 22px;
+}
+
+.hero-art {
+    font-size: clamp(90px, 12vw, 150px);
+    filter: drop-shadow(0 10px 15px #0005);
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+.primary-btn {
+    background: linear-gradient(135deg, #A34BE8, #E04475);
+    color: white;
+    border: none;
+    padding: 13px 20px;
+    border-radius: 11px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 15px rgba(180, 65, 180, 0.2);
+}
+
+.primary-btn:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.15);
+    box-shadow: 0 7px 22px rgba(200, 65, 160, 0.4);
+}
+
+.primary-btn:active {
+    transform: scale(0.97);
+}
+
+.full-btn {
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+/* STATS */
+
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    background: var(--card);
+    border: 1px solid rgba(145, 95, 220, 0.25);
+    padding: 22px;
+    border-radius: 17px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #A34BE8, #E04475);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-6px);
+    border-color: #9255D5;
+    box-shadow: 0 10px 28px rgba(130, 65, 190, 0.18);
+}
+
+.stat-card:hover::before {
+    opacity: 1;
+}
+
+.stat-card span {
+    font-size: 25px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover span {
+    transform: scale(1.12);
+}
+
+.stat-card p {
+    color: var(--muted);
+    font-size: 13px;
+    margin: 12px 0 5px;
+}
+
+.stat-card h2 {
+    font-size: 24px;
+    transition: color 0.3s ease;
+}
+
+.stat-card:hover h2 {
+    color: #D7B5FF;
+}
+
+
+/* PANELS */
+
+.panel {
+    background: var(--card);
+    border: 1px solid #303A57;
+    border-radius: 18px;
+    padding: 23px;
+    margin-bottom: 22px;
+}
+
+.panel h3 {
+    margin-bottom: 18px;
+    font-size: 18px;
+}
+
+.panel-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.panel-heading h3 {
+    margin-bottom: 18px;
+}
+
+.tag {
+    font-size: 11px;
+    background: #34304E;
+    color: #C9B9FF;
+    padding: 6px 10px;
+    border-radius: 20px;
+    margin-bottom: 18px;
+}
+
+/* DASHBOARD GRID */
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 20px;
+}
+
+.world-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.world-card {
+    border: none;
+    padding: 18px 12px;
+    border-radius: 14px;
+    text-align: left;
+    transition: 0.2s;
+    color: white;
+}
+
+.world-card:hover {
+    transform: translateY(-5px);
+}
+
+.world-card > span {
+    font-size: 35px;
+}
+
+.world-card h3 {
+    margin: 12px 0 5px;
+    font-size: 15px;
+}
+
+.world-card p {
+    font-size: 11px;
+    opacity: 0.85;
+}
+
+.purple {
+    background: linear-gradient(135deg, #6244BD, #8B65E7);
+}
+
+.green {
+    background: linear-gradient(135deg, #167E65, #2CC798);
+}
+
+.orange {
+    background: linear-gradient(135deg, #B86B2F, #E9A94F);
+}
+
+.quick-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.action-btn {
+    background: var(--card-light);
+    border: 1px solid #46516D;
+    color: white;
+    padding: 13px 17px;
+    border-radius: 11px;
+    font-weight: 800;
+}
+
+.action-btn:hover {
+    border-color: var(--green);
+}
+
+.badge-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.achievement {
+    background: #34304E;
+    color: #E0D6FF;
+    padding: 10px 13px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+/* PAGE INTRO */
+
+.page-intro {
+    margin-bottom: 23px;
+}
+
+.page-intro h1 {
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+.page-intro p, .panel > p {
+    color: var(--muted);
+}
+
+/* WALLET */
+
+.wallet-hero {
+    background: linear-gradient(120deg, #256B79, #338C82);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 22px;
+}
+
+.wallet-hero p {
+    color: #D6F8EF;
+    font-size: 12px;
+    letter-spacing: 1px;
+    font-weight: 800;
+}
+
+.wallet-hero h1 {
+    font-size: 45px;
+    margin: 8px 0;
+}
+
+/* FORMS */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    font-size: 13px;
+    color: #CDD5EA;
+    font-weight: 800;
+    margin-top: 5px;
+}
+
+input, select, textarea {
+    width: 100%;
+    background: #121A30;
+    color: white;
+    border: 1px solid #3B4765;
+    padding: 13px;
+    border-radius: 10px;
+    outline: none;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px #39D69B20;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+input::placeholder, textarea::placeholder {
+    color: #7785A4;
+}
+
+/* TRANSACTIONS */
+
+.transaction {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid #35405C;
+    gap: 10px;
+}
+
+.transaction:last-child {
+    border: none;
+}
+
+.transaction p {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.positive {
+    color: var(--green);
+    font-weight: 900;
+}
+
+.negative {
+    color: var(--red);
+    font-weight: 900;
+}
+
+.empty {
+    color: var(--muted);
+    font-size: 14px;
+    padding: 10px 0;
+}
+
+/* SPENDING CHART */
+
+.chart-row {
+    margin: 18px 0;
+}
+
+.chart-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 7px;
+    font-size: 13px;
+}
+
+.chart-track {
+    background: #37415E;
+    height: 12px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.chart-fill {
+    height: 100%;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #8966F5, #39D69B);
+}
+
+.insight {
+    background: #273A4A;
+    border: 1px solid #416C72;
+    padding: 18px;
+    border-radius: 13px;
+    margin-top: 20px;
+    line-height: 1.7;
+    color: #D9F8EF;
+}
+
+/* SAVINGS GOALS */
+
+.goal-card {
+    background: var(--card-light);
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 15px;
+}
+
+.goal-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+}
+
+.goal-card h3 {
+    margin-bottom: 5px;
+}
+
+.goal-card p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #8966F5, #39D69B);
+    border-radius: 20px;
+    transition: 0.4s;
+}
+
+.goal-card .progress-track {
+    margin: 15px 0;
+}
+
+.goal-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.small-btn {
+    border: none;
+    padding: 9px 13px;
+    border-radius: 9px;
+    background: var(--purple);
+    color: white;
+    font-weight: 800;
+}
+
+.delete-btn {
+    background: #59343E;
+    color: #FFADB3;
+}
+
+/* RIPPLE */
+
+.ripple-panel {
+    text-align: center;
+    padding: 35px;
+}
+
+.ripple-panel h2 {
+    font-size: 28px;
+    margin: 15px 0;
+}
+
+.ripple-goal {
+    background: #121A30;
+    padding: 25px;
+    border-radius: 15px;
+    margin: 25px 0;
+}
+
+.ripple-goal h1 {
+    margin: 10px 0;
+    color: var(--green);
+}
+
+.choice-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.choice-card {
+    background: var(--card-light);
+    border: 1px solid #4A5674;
+    color: white;
+    padding: 25px;
+    border-radius: 15px;
+    font-size: 35px;
+    transition: 0.2s;
+}
+
+.choice-card:hover {
+    border-color: var(--green);
+    transform: translateY(-4px);
+}
+
+.choice-card h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.choice-card p {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+/* PARENT REQUESTS */
+
+.request-card {
+    background: var(--card-light);
+    padding: 17px;
+    border-radius: 13px;
+    margin-top: 12px;
+}
+
+.request-card p {
+    color: var(--muted);
+    font-size: 13px;
+    margin: 6px 0;
+}
+
+.status {
+    display: inline-block;
+    padding: 5px 10px;
+    background: #54472B;
+    color: #FFD779;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.status.approved {
+    background: #194C3D;
+    color: #68E5B3;
+}
+
+.status.declined {
+    background: #59343E;
+    color: #FFADB3;
+}
+
+/* MISSIONS */
+
+.mission-card {
+    background: var(--card);
+    border: 1px solid rgba(145, 95, 220, 0.25);
+    padding: 22px;
+    border-radius: 17px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.mission-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(180deg, #A34BE8, #E04475);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.mission-card:hover {
+    transform: translateY(-4px);
+    border-color: #9255D5;
+    box-shadow: 0 9px 25px rgba(130, 65, 190, 0.18);
+}
+
+.mission-card:hover::before {
+    opacity: 1;
+}
+
+.mission-card h3 {
+    margin-bottom: 7px;
+    transition: color 0.3s ease;
+}
+
+.mission-card:hover h3 {
+    color: #D7B5FF;
+}
+
+.mission-card p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.mission-reward {
+    color: var(--gold);
+    font-weight: 900;
+    margin-top: 7px;
+}
+
+.completed {
+    opacity: 0.65;
+}
+
+.mission-card .small-btn:disabled {
+    background: #3D5360;
+    color: #B7C7C8;
+    cursor: not-allowed;
+}
+
+
+/* FOOTER */
+
+footer {
+    border-top: 1px solid #303A57;
+    margin-top: 35px;
+    padding: 20px 0;
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+    line-height: 2;
+}
+
+/* NOTIFICATIONS */
+
+.toast {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #263B4A;
+    border: 1px solid var(--green);
+    color: white;
+    padding: 15px 22px;
+    border-radius: 12px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+    transition: 0.3s;
+    z-index: 100;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 1000px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 700px) {
+    .app {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .logo {
+        margin-bottom: 15px;
+    }
+
+    nav {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .nav-btn {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    .sidebar-bottom {
+        margin-top: 12px;
+    }
+
+    .level-card {
+        margin-top: 10px;
+    }
+
+    .main-content {
+        padding: 18px 14px;
+    }
+
+    .hero {
+        padding: 23px;
+        min-height: 230px;
+    }
+
+    .hero-art {
+        font-size: 65px;
+    }
+
+    .hero p {
+        font-size: 13px;
+    }
+
+    .stats-grid {
+        gap: 10px;
+    }
+
+    .stat-card {
+        padding: 14px;
+    }
+
+    .stat-card h2 {
+        font-size: 19px;
+    }
+
+    .world-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .choice-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .topbar h2 {
+        font-size: 17px;
+    }
+
+    .top-wallet {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .mission-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* TABLET RESPONSIVENESS */
+@media (min-width: 701px) and (max-width: 1024px) {
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+
+    .hero {
+        padding: 28px;
+    }
+
+    .hero-art {
+        font-size: 100px;
+    }
+
+    .world-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .choice-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .main-content {
+        padding: 25px;
+    }
+
+}
+
+
+
+
+
+/* ==========================================
+   MONEYVERSE - CRIMSON FUTURE THEME
+   Visual upgrade only - original features stay
+========================================== */
+
+:root {
+    --background: #08090D;
+    --sidebar: #101116;
+    --card: #171820;
+    --card-light: #22232D;
+
+    --purple: #E32636;
+    --green: #FF4657;
+    --gold: #FF9D73;
+
+    --white: #F7F7FA;
+    --muted: #A5A6B2;
+    --red: #FF5364;
+}
+
+/* MAIN BACKGROUND */
+
+body {
+    background:
+        radial-gradient(ellipse at 15% 15%, #42121C55, transparent 38%),
+        radial-gradient(ellipse at 85% 75%, #35101A44, transparent 35%),
+        #08090D;
+    color: var(--white);
+    isolation: isolate;
+    overflow-x: hidden;
+}
+
+/* FLOATING FUTURISTIC ORBS */
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+body::before {
+    background:
+        radial-gradient(circle at 12% 25%, #FF304022 0 55px, transparent 57px),
+        radial-gradient(circle at 82% 18%, #FF304018 0 85px, transparent 87px),
+        radial-gradient(circle at 70% 78%, #FF304015 0 45px, transparent 47px),
+        radial-gradient(circle at 35% 88%, #FF304018 0 70px, transparent 72px);
+    animation: orbFloat 16s ease-in-out infinite alternate;
+}
+
+body::after {
+    background:
+        radial-gradient(circle at 92% 55%, #FF465711 0 110px, transparent 112px),
+        radial-gradient(circle at 8% 80%, #FF465711 0 75px, transparent 77px);
+    animation: orbFloat 22s ease-in-out infinite alternate-reverse;
+}
+
+.app {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes orbFloat {
+    from {
+        transform: translate3d(-8px, -12px, 0);
+    }
+    to {
+        transform: translate3d(12px, 15px, 0);
+    }
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    background: rgba(16, 17, 22, 0.96);
+    border-right: 1px solid #FF465729;
+    box-shadow: 8px 0 35px #00000030;
+}
+
+.logo-icon {
+    color: #FF5364;
+    filter: drop-shadow(0 0 9px #FF3040AA);
+}
+
+.menu-label {
+    color: #FF8490;
+}
+
+.nav-btn {
+    border: 1px solid transparent;
+    transition: all 0.25s ease;
+}
+
+.nav-btn:hover {
+    background: #FF304015;
+    border-color: #FF465744;
+    color: white;
+    transform: translateX(3px);
+}
+
+.nav-btn.active {
+    background: linear-gradient(110deg, #A9162B, #E32636);
+    box-shadow: 0 0 22px #FF304044;
+    color: white;
+}
+
+.level-card {
+    background: linear-gradient(145deg, #22232D, #15161D);
+    border: 1px solid #FF465733;
+    box-shadow: 0 8px 25px #00000030;
+}
+
+.level-card span {
+    color: #FF9D73;
+}
+
+.xp-track,
+.progress-track {
+    background: #33333E;
+}
+
+#xp-bar {
+    background: linear-gradient(90deg, #E32636, #FF9D73);
+    box-shadow: 0 0 12px #FF465799;
+}
+
+.reset-btn:hover {
+    border-color: #FF5364;
+    color: white;
+}
+
+/* MAIN CONTENT */
+
+.top-wallet {
+    background: #191A23;
+    border-color: #FF465744;
+    box-shadow: 0 0 18px #FF304015;
+}
+
+/* HERO */
+
+.hero {
+    background:
+        radial-gradient(circle at 85% 25%, #FF536444, transparent 35%),
+        linear-gradient(115deg, #240B12, #681526, #171820);
+    border: 1px solid #FF536455;
+    box-shadow: 0 15px 45px #00000055;
+}
+
+.hero-tag {
+    color: #FF9DA7;
+}
+
+.hero h1 span {
+    color: #FF9D73;
+    text-shadow: 0 0 15px #FF536455;
+}
+
+.hero-art {
+    filter: drop-shadow(0 0 25px #FF304066);
+}
+
+.primary-btn {
+    background: linear-gradient(110deg, #D51F35, #FF4657);
+    color: white;
+    box-shadow: 0 5px 18px #FF304044;
+}
+
+.primary-btn:hover {
+    box-shadow: 0 7px 25px #FF304077;
+}
+
+/* STATS AND PANELS */
+
+.stat-card,
+.panel {
+    background: linear-gradient(145deg, #1B1C25, #14151C);
+    border: 1px solid #FF46572B;
+    box-shadow: 0 8px 25px #00000025;
+}
+
+.stat-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::after {
+    content: "";
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    right: -25px;
+    top: -25px;
+    border-radius: 50%;
+    border: 1px solid #FF465733;
+    box-shadow: 0 0 22px #FF465711;
+    pointer-events: none;
+}
+
+.stat-card:hover,
+.panel:hover {
+    border-color: #FF465766;
+}
+
+.panel h3 {
+    color: #F7F7FA;
+}
+
+.tag {
+    background: #471B26;
+    color: #FFADB5;
+}
+
+/* GAME WORLD CARDS */
+
+.world-card {
+    border: 1px solid #FFFFFF18;
+    box-shadow: 0 8px 20px #00000030;
+}
+
+.world-card:hover {
+    box-shadow: 0 0 22px #FF465744;
+}
+
+.purple {
+    background: linear-gradient(135deg, #571629, #B51F38);
+}
+
+.green {
+    background: linear-gradient(135deg, #76212E, #D52E45);
+}
+
+.orange {
+    background: linear-gradient(135deg, #78301F, #BD5736);
+}
+
+/* BUTTONS */
+
+.action-btn {
+    background: #24242E;
+    border: 1px solid #FF465744;
+    transition: all 0.2s ease;
+}
+
+.action-btn:hover,
+.small-btn:hover {
+    border-color: #FF5364;
+    box-shadow: 0 0 16px #FF304033;
+}
+
+.small-btn {
+    background: linear-gradient(110deg, #B51F38, #E32636);
+    transition: all 0.2s ease;
+}
+
+.achievement {
+    background: #3A1923;
+    border: 1px solid #FF465744;
+    color: #FFB1B8;
+}
+
+/* WALLET */
+
+.wallet-hero {
+    background:
+        radial-gradient(circle at 90% 20%, #FF536455, transparent 35%),
+        linear-gradient(120deg, #35101B, #9B2037);
+    border: 1px solid #FF536455;
+    box-shadow: 0 12px 35px #00000040;
+}
+
+.wallet-hero p {
+    color: #FFD3D7;
+}
+
+.wallet-hero h1 {
+    text-shadow: 0 0 20px #FF536455;
+}
+
+/* INPUTS AND FORMS */
+
+input,
+select,
+textarea {
+    background: #111219;
+    border: 1px solid #44404A;
+    color: white;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #FF5364;
+    box-shadow: 0 0 0 3px #FF536422;
+}
+
+label {
+    color: #E1DDE3;
+}
+
+/* TRANSACTIONS */
+
+.transaction {
+    border-bottom-color: #38303A;
+}
+
+.positive {
+    color: #FF9D73;
+}
+
+.negative {
+    color: #FF6575;
+}
+
+/* CHARTS AND INSIGHTS */
+
+.chart-track {
+    background: #35333D;
+}
+
+.chart-fill,
+.progress-fill {
+    background: linear-gradient(90deg, #B51F38, #FF5364, #FF9D73);
+    box-shadow: 0 0 10px #FF465744;
+}
+
+.insight {
+    background: #291820;
+    border-color: #A52C43;
+    color: #FFD5D9;
+}
+
+/* SAVINGS GOALS */
+
+.goal-card {
+    background: linear-gradient(145deg, #24232C, #191820);
+    border: 1px solid #FF465733;
+}
+
+.delete-btn {
+    background: #54202D;
+    color: #FFADB5;
+}
+
+/* MONEY RIPPLE */
+
+.ripple-goal {
+    background: #211820;
+    border: 1px solid #FF465733;
+}
+
+.ripple-goal h1 {
+    color: #FF9D73;
+}
+
+.choice-card {
+    background: linear-gradient(145deg, #29232D, #191820);
+    border: 1px solid #FF465744;
+}
+
+.choice-card:hover {
+    border-color: #FF5364;
+    box-shadow: 0 0 20px #FF304033;
+}
+
+/* FAMILY ROOM */
+
+.request-card {
+    background: #24232C;
+    border: 1px solid #FF46572B;
+}
+
+.status {
+    background: #4B3924;
+    color: #FFD779;
+}
+
+.status.approved {
+    background: #263B31;
+    color: #86E8B6;
+}
+
+.status.declined {
+    background: #54202D;
+    color: #FFADB5;
+}
+
+/* MISSIONS */
+
+.mission-card {
+    background: linear-gradient(145deg, #1D1D27, #15151D);
+    border-color: #FF465733;
+}
+
+.mission-reward {
+    color: #FF9D73;
+}
+
+.mission-card .small-btn:disabled {
+    background: #39333A;
+    color: #B8ADB2;
+}
+
+/* FOOTER */
+
+footer {
+    border-top-color: #FF465733;
+}
+
+/* NOTIFICATIONS */
+
+.toast {
+    background: #271820;
+    border: 1px solid #FF5364;
+    box-shadow: 0 0 22px #FF304033;
+}
+
+/* ACCESSIBILITY AND MOTION */
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid #FF9D73;
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+/* =========================================
+   MONEYVERSE - FUTURISTIC NEON EXPERIENCE
+========================================= */
+
+/* Animated sci-fi background */
+body {
+    background-color: #08090d;
+    background-image:
+        linear-gradient(rgba(255, 55, 75, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 55, 75, 0.035) 1px, transparent 1px);
+    background-size: 38px 38px;
+}
+
+/* Soft neon atmosphere */
+body::before {
+    content: "";
+    position: fixed;
+    width: 350px;
+    height: 350px;
+    top: 5%;
+    right: -100px;
+    background: rgba(255, 35, 65, 0.12);
+    filter: blur(100px);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    bottom: 0;
+    left: -100px;
+    background: rgba(130, 25, 55, 0.15);
+    filter: blur(100px);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Main heading glow */
+h1, h2 {
+    text-shadow: 0 0 15px rgba(255, 55, 75, 0.3);
+}
+
+/* Futuristic cards */
+.card,
+.stat-card,
+.game-card,
+.goal-card,
+.request-card,
+.mission-card {
+    border: 1px solid rgba(255, 65, 85, 0.18);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.25s ease,
+                border-color 0.25s ease,
+                box-shadow 0.25s ease;
+}
+
+/* Interactive card glow */
+.card:hover,
+.stat-card:hover,
+.game-card:hover,
+.goal-card:hover,
+.request-card:hover,
+.mission-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 70, 90, 0.7);
+    box-shadow:
+        0 0 15px rgba(255, 45, 70, 0.15),
+        0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Neon buttons */
+button {
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    filter: brightness(1.15);
+    box-shadow: 0 0 18px rgba(255, 55, 75, 0.3);
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+/* Navigation clarity */
+.nav-btn {
+    transition: all 0.2s ease;
+}
+
+.nav-btn.active {
+    border-color: #ff4657;
+    box-shadow: inset 3px 0 #ff4657,
+                0 0 14px rgba(255, 55, 75, 0.12);
+}
+
+/* Neon progress bars */
+.progress-fill,
+.chart-fill,
+#xp-bar {
+    background: linear-gradient(90deg, #e32636, #ff7180, #ffb18a);
+    box-shadow: 0 0 12px rgba(255, 65, 85, 0.4);
+}
+
+/* Glowing wallet balance */
+#dash-balance,
+#top-balance,
+#wallet-balance {
+    text-shadow: 0 0 14px rgba(255, 75, 95, 0.35);
+}
+
+/* Smooth page appearance */
+.page.active {
+    animation: pageEnter 0.35s ease;
+}
+
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Subtle animated neon line */
+.app {
+    position: relative;
+}
+
+.app::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 15%;
+    width: 70%;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #ff4657,
+        #ffad83,
+        #ff4657,
+        transparent
+    );
+    box-shadow: 0 0 12px #ff4657;
+    animation: neonScan 5s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes neonScan {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scaleX(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+}
+
+/* Keep the experience comfortable */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* CIRCULAR XP INDICATOR */
+
+.xp-ring {
+    --progress: 0%;
+
+    width: 115px;
+    height: 115px;
+    margin: 18px auto;
+    border-radius: 50%;
+
+    background: conic-gradient(
+        #ff4657 var(--progress),
+        #34343e var(--progress)
+    );
+
+    display: grid;
+    place-items: center;
+
+    box-shadow: 0 0 22px #ff465744;
+    transition: background 0.5s ease;
+}
+
+.xp-ring-inner {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    background: #171820;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.xp-ring-inner span {
+    font-size: 23px;
+    font-weight: 900;
+    color: #ff7180;
+}
+
+.xp-ring-inner small {
+    color: #a5a6b2;
+    font-size: 11px;
+}
+
+/* DREAM BUILDER CIRCULAR PROGRESS */
+
+.goal-ring {
+    --progress: 0%;
+
+    width: 76px;
+    height: 76px;
+    flex-shrink: 0;
+    border-radius: 50%;
+
+    background: conic-gradient(
+        #ff4657 var(--progress),
+        #34343e var(--progress)
+    );
+
+    display: grid;
+    place-items: center;
+    box-shadow: 0 0 18px #ff465744;
+}
+
+.goal-ring-inner {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #171820;
+
+    display: grid;
+    place-items: center;
+}
+
+.goal-ring-inner span {
+    color: #ff7180;
+    font-size: 17px;
+    font-weight: 900;
+}
+
+/* MONEYVERSE ACHIEVEMENT BADGES */
+
+.badge-list {
+    display: grid;
+    gap: 14px;
+}
+
+.achievement {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 15px;
+    border-radius: 14px;
+    border: 1px solid #39313b;
+    background: #1b1b24;
+    transition: 0.3s ease;
+}
+
+.achievement.unlocked {
+    border-color: #ff4657;
+    box-shadow: 0 0 15px #ff465722;
+}
+
+.achievement.locked {
+    opacity: 0.55;
+    filter: grayscale(0.7);
+}
+
+.achievement:hover {
+    transform: translateY(-3px);
+}
+
+.achievement-icon {
+    font-size: 30px;
+    min-width: 38px;
+    text-align: center;
+}
+
+.achievement strong {
+    color: #ffffff;
+    font-size: 15px;
+}
+
+.achievement p {
+    color: #a5a6b2;
+    font-size: 12px;
+    margin: 5px 0 0;
+}
+
+.achievement > span:last-child {
+    margin-left: auto;
+    font-size: 18px;
+}
+
+/* LEVEL UP CELEBRATION */
+
+.level-up-popup {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: grid;
+    place-items: center;
+    background: #000000aa;
+    animation: levelOverlay 3s ease forwards;
+}
+
+.level-up-content {
+    text-align: center;
+    padding: 35px 55px;
+    border: 2px solid #ff4657;
+    border-radius: 22px;
+    background: #191922;
+    box-shadow: 0 0 40px #ff465788;
+    animation: levelPop 3s ease forwards;
+}
+
+.level-up-content span {
+    font-size: 55px;
+}
+
+.level-up-content h2 {
+    color: #ff4657;
+    font-size: 35px;
+    margin: 12px 0;
+}
+
+.level-up-content p {
+    color: white;
+    font-size: 17px;
+}
+
+@keyframes levelPop {
+    0% { transform: scale(0.5); opacity: 0; }
+    15% { transform: scale(1.1); opacity: 1; }
+    25% { transform: scale(1); }
+    85% { opacity: 1; }
+    100% { transform: scale(0.9); opacity: 0; }
+}
+
+@keyframes levelOverlay {
+    0%, 85% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* MONEYVERSE DAILY STREAK */
+
+
+.streak-card {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding: 24px;
+    margin: 22px 0;
+    border: 1px solid rgba(255, 70, 87, 0.5);
+    border-radius: 20px;
+    background: linear-gradient(120deg, #30151F, #211722, #191922);
+    box-shadow: 0 5px 22px rgba(255, 70, 87, 0.12);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.streak-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, #FF4657, #FF9A55);
+}
+
+.streak-card:hover {
+    transform: translateY(-5px);
+    border-color: #FF7180;
+    box-shadow: 0 10px 32px rgba(255, 70, 87, 0.22);
+}
+
+.streak-icon {
+    font-size: 50px;
+    animation: flamePulse 1.8s ease-in-out infinite alternate;
+    filter: drop-shadow(0 0 9px #ff465755);
+}
+
+.streak-card h3 {
+    color: #FF7180;
+    margin: 0 0 8px;
+}
+
+.streak-card p {
+    color: #ffffff;
+    margin: 5px 0;
+}
+
+.streak-card strong,
+#best-streak {
+    color: #FF7180;
+    font-weight: 900;
+}
+
+@keyframes flamePulse {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.12);
+    }
+}
+/* TOAST NOTIFICATIONS */
+
+#toast-container {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.toast {
+    background: #201b35;
+    color: white;
+    padding: 15px 22px;
+    border-radius: 12px;
+    border-left: 4px solid #4ade80;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    animation: toastIn 0.3s ease;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.toast.error {
+    border-left-color: #ef4444;
+}
+
+@keyframes toastIn {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+.delete-btn {
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.delete-btn:hover {
+    background: #dc2626;
+    transform: translateY(-2px);
+}
+/* DREAM ISLAND EMPTY STATE */
+
+.empty-goals {
+    text-align: center;
+    padding: 45px 20px;
+    background: linear-gradient(135deg, #211b3b, #30204d);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 18px;
+    margin: 15px 0;
+}
+
+.empty-goals-icon {
+    font-size: 65px;
+    margin-bottom: 15px;
+    animation: dreamFloat 3s ease-in-out infinite;
+}
+
+.empty-goals h2 {
+    color: white;
+    margin-bottom: 12px;
+}
+
+.empty-goals p {
+    color: #c4b5fd;
+    line-height: 1.6;
+    margin: 6px 0;
+}
+
+@keyframes dreamFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}

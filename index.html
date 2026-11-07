@@ -1,0 +1,407 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoneyVerse | The Adventure of Every Rupee</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo">
+            <span class="logo-icon">✦</span>
+            <span>MoneyVerse</span>
+        </div>
+
+        <p class="menu-label">YOUR WORLD</p>
+
+        <nav>
+            <button class="nav-btn active" data-page="dashboard">🏠 Dashboard</button>
+            <button class="nav-btn" data-page="wallet">👛 My Wallet</button>
+            <button class="nav-btn" data-page="detective">🔎 Money Detective</button>
+            <button class="nav-btn" data-page="dreams">🎯 Dream Builder</button>
+            <button class="nav-btn" data-page="ripple">🦋 Money Ripple</button>
+            <button class="nav-btn" data-page="family">👨‍👩‍👧 Family Room</button>
+            <button class="nav-btn" data-page="missions">⚔️ Missions</button>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="level-card">
+                <span>⭐ YOUR LEVEL</span>
+                <h2 id="level">Level 1</h2>
+                <p id="xp-text">0 / 100 XP</p>
+
+                <!-- NEW CIRCULAR XP INDICATOR -->
+                <div class="xp-ring" id="xp-ring">
+                    <div class="xp-ring-inner">
+                        <span id="xp-ring-number">0%</span>
+                        <small>XP</small>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <p class="small-text">YOUR FINANCIAL ADVENTURE</p>
+                <h2 id="page-title">Welcome to MoneyVerse!</h2>
+            </div>
+
+            <div class="top-wallet">
+                <span>🪙</span>
+                <strong id="top-balance">Loading...</strong>
+            </div>
+        </header>
+
+        <!-- DASHBOARD -->
+        <section id="dashboard" class="page active">
+
+            <div class="hero">
+                <div>
+                    <span class="hero-tag">🚀 YOUR JOURNEY STARTS HERE</span>
+                    <h1>Every rupee<br>has a <span>destination.</span></h1>
+                    <p>Learn to save, spend and make smarter money decisions!</p>
+                    <button class="primary-btn" data-go="missions">Explore missions →</button>
+                </div>
+                <div class="hero-art">🌍</div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span>👛</span>
+                    <p>Available money</p>
+                    <h2 id="dash-balance">Loading...</h2>
+                </div>
+
+                <div class="stat-card">
+                    <span>📉</span>
+                    <p>Total spent</p>
+                    <h2 id="dash-spent">₹0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <span>🎯</span>
+                    <p>Saved towards goals</p>
+                    <h2 id="dash-saved">₹0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <span>⭐</span>
+                    <p>Experience points</p>
+                    <h2 id="dash-xp">0 XP</h2>
+                </div>
+            </div>
+          
+<div class="panel mission-card">
+    <div class="panel-heading">
+        <h3>🎮 Mission of the Day</h3>
+        <span class="tag">Daily challenge</span>
+    </div>
+
+    <h2>💰 Become a Smart Saver!</h2>
+    <p>Visit Dream Island and create a savings goal for something you want.</p>
+
+    <button class="primary-btn" data-go="dreams">
+        Start mission →
+    </button>
+</div>
+
+            <div class="content-grid">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3>🗺️ Explore your world</h3>
+                        <span class="tag">3 locations</span>
+                    </div>
+
+                    <div class="world-grid">
+                        <button class="world-card purple" data-go="detective">
+                            <span>🏙️</span>
+                            <h3>Spend City</h3>
+                            <p>Find where your money goes.</p>
+                        </button>
+
+                        <button class="world-card green" data-go="dreams">
+                            <span>🏝️</span>
+                            <h3>Dream Island</h3>
+                            <p>Build your savings future.</p>
+                        </button>
+
+                        <button class="world-card orange" data-go="family">
+                            <span>🏰</span>
+                            <h3>Decision Castle</h3>
+                            <p>Make smarter choices.</p>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3>🏆 Your achievements</h3>
+                    </div>
+                    <div id="dashboard-badges" class="badge-list">
+                        <p class="empty">Complete missions to earn badges!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3>⚡ Quick actions</h3>
+                </div>
+                <div class="quick-actions">
+                    <button class="action-btn" data-go="wallet">➕ Add money</button>
+                    <button class="action-btn" data-go="wallet">💸 Record expense</button>
+                    <button class="action-btn" data-go="dreams">🎯 Create a goal</button>
+                    <button class="action-btn" data-go="ripple">🦋 Try Money Ripple</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- WALLET -->
+        <section id="wallet" class="page">
+            <div class="page-intro">
+                <h1>👛 My Wallet</h1>
+                <p>Your virtual money, your responsibility.</p>
+            </div>
+
+            <div class="wallet-hero">
+                <p>YOUR AVAILABLE BALANCE</p>
+                <h1 id="wallet-balance">Loading...</h1>
+                <p>🪙 Virtual money for learning only</p>
+            </div>
+
+            <div class="content-grid">
+                <div class="panel">
+                    <h3>➕ Add pocket money</h3>
+                    <form id="income-form">
+                        <label>Amount (₹)</label>
+                        <input type="number" id="income-amount" min="1" max="100000" required placeholder="Example: 200">
+                        <label>Source</label>
+                        <input type="text" id="income-source" maxlength="40" required placeholder="Example: Pocket money">
+                        <button class="primary-btn full-btn">Add money</button>
+                    </form>
+                </div>
+
+                <div class="panel">
+                    <h3>💸 Record an expense</h3>
+                    <form id="expense-form">
+                        <label>What did you buy?</label>
+                        <input type="text" id="expense-name" maxlength="40" required placeholder="Example: Notebook">
+                        <label>Amount (₹)</label>
+                        <input type="number" id="expense-amount" min="1" max="100000" required placeholder="Example: 50">
+                        <label>Category</label>
+                        <select id="expense-category">
+                            <option>Food</option>
+                            <option>Stationery</option>
+                            <option>Toys</option>
+                            <option>Transport</option>
+                            <option>Entertainment</option>
+                            <option>Other</option>
+                        </select>
+                        <button class="primary-btn full-btn">Record expense</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h3>📜 Transaction history</h3>
+                <div id="transactions"></div>
+            </div>
+        </section>
+
+        <!-- MONEY DETECTIVE -->
+        <section id="detective" class="page">
+            <div class="page-intro">
+                <h1>🔎 Money Detective</h1>
+                <p>Investigate where your money disappears!</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <p>Total expenses</p>
+                    <h2 id="detective-total">₹0</h2>
+                </div>
+                <div class="stat-card">
+                    <p>Transactions</p>
+                    <h2 id="detective-count">0</h2>
+                </div>
+                <div class="stat-card">
+                    <p>Biggest category</p>
+                    <h2 id="detective-biggest">None</h2>
+                </div>
+            </div>
+            <div class="stat-card">
+    <p>Total saved</p>
+    <h2 id="detective-saved">₹0</h2>
+</div>
+
+            <div class="panel">
+                <h3>📊 Your spending breakdown</h3>
+                <div id="spending-chart"></div>
+                <div id="spending-insight" class="insight">
+                    Make your first expense to discover your spending habits!
+                </div>
+            </div>
+
+            <div class="panel">
+                <h3>💡 Reality Converter</h3>
+                <p>See what your spending could buy in everyday life.</p>
+                <div id="reality-result"></div>
+            </div>
+        </section>
+
+        <!-- DREAM BUILDER -->
+        <section id="dreams" class="page">
+            <div class="page-intro">
+                <h1>🎯 Dream Builder</h1>
+                <p>Big dreams start with small savings.</p>
+            </div>
+
+            <div class="panel">
+                <h3>✨ Create a new dream</h3>
+                <form id="goal-form">
+                    <label>What do you want to save for?</label>
+                    <input type="text" id="goal-name" maxlength="40" required placeholder="Example: Bicycle">
+                    <label>Choose a category</label>
+<select id="goal-category" required>
+    <option value="Gaming">🎮 Gaming</option>
+    <option value="Education">📚 Education</option>
+    <option value="Travel">✈️ Travel</option>
+    <option value="Gadgets">💻 Gadgets</option>
+    <option value="Other">🌟 Other</option>
+</select>
+                    <label>How much does it cost? (₹)</label>
+                    <input type="number" id="goal-target" min="1" max="1000000" required placeholder="Example: 5000">
+                    <label>How much have you already saved? (₹)</label>
+                    <input type="number" id="goal-current" min="0" max="1000000" value="0" required>
+                    <button class="primary-btn">Create my dream ✨</button>
+                </form>
+            </div>
+
+            <div class="panel">
+                <h3>🏝️ Your dreams</h3>
+                <div id="goals-list"></div>
+            </div>
+        </section>
+
+        <!-- MONEY RIPPLE -->
+        <section id="ripple" class="page">
+            <div class="page-intro">
+                <h1>🦋 Money Ripple</h1>
+                <p>One decision can change your financial future.</p>
+            </div>
+
+            <div class="panel ripple-panel">
+                <span class="hero-tag">YOUR FINANCIAL DECISION</span>
+                <h2>Imagine you want a bicycle! 🚲</h2>
+                <p>Your dream costs ₹5,000. You have already saved ₹2,000.</p>
+
+                <div class="ripple-goal">
+                    <p>YOUR BICYCLE FUND</p>
+                    <h1>₹2,000 / ₹5,000</h1>
+                    <div class="progress-track">
+                        <div class="progress-fill" style="width:40%"></div>
+                    </div>
+                </div>
+
+                <h3>You receive ₹200. What will you do?</h3>
+
+                <div class="choice-grid">
+                    <button id="spend-choice" class="choice-card">
+                        🧸
+                        <h3>Buy a toy</h3>
+                        <p>Spend ₹200 now.</p>
+                    </button>
+
+                    <button id="save-choice" class="choice-card">
+                        💰
+                        <h3>Save the money</h3>
+                        <p>Put ₹200 towards your dream.</p>
+                    </button>
+                </div>
+
+                <div id="ripple-result" class="insight">
+                    Choose an option to see what happens to your dream!
+                </div>
+            </div>
+        </section>
+
+        <!-- FAMILY ROOM -->
+        <section id="family" class="page">
+            <div class="page-intro">
+                <h1>👨‍👩‍👧 Family Decision Room</h1>
+                <p>Think before you buy. Discuss before you decide.</p>
+            </div>
+
+            <div class="panel">
+                <h3>🛍️ Request a purchase</h3>
+                <form id="parent-form">
+                    <label>What do you want to buy?</label>
+                    <input type="text" id="request-name" maxlength="40" required placeholder="Example: Football boots">
+                    <label>Price (₹)</label>
+                    <input type="number" id="request-price" min="1" max="100000" required placeholder="Example: 1500">
+                    <label>Why do you want it?</label>
+                    <textarea id="request-reason" maxlength="200" required placeholder="Explain why this purchase matters to you."></textarea>
+                    <button class="primary-btn">Send to parent review</button>
+                </form>
+            </div>
+
+            <div class="panel">
+                <h3>📋 Purchase requests</h3>
+                <div id="requests-list"></div>
+            </div>
+        </section>
+
+        <!-- MISSIONS -->
+        <section id="missions" class="page">
+            <div class="page-intro">
+                <h1>⚔️ Money Missions</h1>
+                <p>Complete challenges and become a Money Master!</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span>⭐</span>
+                    <p>Total XP</p>
+                    <h2 id="mission-xp">0</h2>
+                </div>
+                <div class="stat-card">
+                    <span>🏆</span>
+                    <p>Completed missions</p>
+                    <h2 id="mission-count">0</h2>
+                </div>
+            </div>
+
+            <div id="missions-list"></div>
+        </section>
+
+        <footer>
+            <p>MoneyVerse © 2026 · Learn today. Lead tomorrow.</p>
+            <p>All money shown is fictional virtual money. No real transactions.</p>
+        </footer>
+
+    </main>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="script.js"></script>
+<div id="toast-container"></div>
+</body>
+</html>
+
+
+
